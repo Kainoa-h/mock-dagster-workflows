@@ -1,8 +1,7 @@
-from dagster import Definitions, load_assets_from_modules
-from . import assets
-
-all_assets = load_assets_from_modules([assets])
+from dagster import Definitions
+from .jobs.workflow_one import run_workflow_one
+from .jobs.workflow_two import run_workflow_two
 
 defs = Definitions(
-    assets=all_assets,
+    jobs=[run_workflow_one, run_workflow_two]
 )
